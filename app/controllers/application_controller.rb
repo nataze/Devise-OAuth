@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
 
   def expired_token
     if current_user && current_user.token_expired?
-      redirect_to '/users/signout'
       sign_out current_user    
     end
   end
@@ -27,7 +26,9 @@ class ApplicationController < ActionController::Base
 
   
   def after_sign_in_path_for(resource)
-    current_user.create_token
+    if current_user
+      current_user.create_token
+    end
   end
 
 

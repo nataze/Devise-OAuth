@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :expired_token
   before_action :ensure_signup_complete, only: [:new, :create, :update, :destroy]
+  
 
   def test
     # user = User.find_by_email(request.headers["X-User-Email"])
